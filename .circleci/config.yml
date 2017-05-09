@@ -1,0 +1,13 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/bt-build-base
+    docker:
+      - image: ubuntu
+    steps:
+      - checkout
+      - run: |
+        echo "hello world"
+        pwd
+        ls
