@@ -11,10 +11,11 @@ jobs:
       - run:
           name: Build
           command: |
-            set -x
             tag=0.1.$CIRCLE_BUILD_NUM
-            echo "Tag is $tag"
+            image="steshaw/bt-build-base:$tag"
+            echo "Building image $image"
             docker build -t "steshaw/bt-build-base:$tag" .
-            docker login -username "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
-            docker push steshaw/bt-build-base:$TAG
             docker images
+            docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 --decode)"
+            echo "Pushing image $image"
+            docker push steshaw/bt-build-base:$TAG
