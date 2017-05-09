@@ -4,10 +4,11 @@ jobs:
   build:
     working_directory: ~/bt-build-base
     docker:
-      - image: ubuntu
+      - image: docker
     steps:
       - checkout
       - run: |
-          echo "hello world"
           pwd
           ls
+          which docker
+          docker images
