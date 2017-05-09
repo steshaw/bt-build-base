@@ -7,8 +7,17 @@ jobs:
       - image: docker
     steps:
       - checkout
-      - run: |
-          pwd
-          ls
-          which docker
-          docker images
+      - setup_remote_docker
+      - run:
+          name: Build
+          command: |
+            ls
+            which docker
+            pwd
+            tag=0.1.$CIRCLE_BUILD_NUM
+            echo tag=$tag
+            echo docker build -t "steshaw/bt-build-base:$tag" .
+            docker images
+            docker login -username "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
+            docker push steshaw/bt-build-base:$TAG
+            docker images
