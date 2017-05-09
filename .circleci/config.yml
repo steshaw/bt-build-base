@@ -16,6 +16,6 @@ jobs:
             echo "Building image $image"
             docker build -t "steshaw/bt-build-base:$tag" .
             docker images
-            docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 --decode)"
+            docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
             echo "Pushing image $image"
             docker push steshaw/bt-build-base:$TAG
