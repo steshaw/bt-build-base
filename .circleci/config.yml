@@ -14,8 +14,7 @@ jobs:
             tag=0.1.$CIRCLE_BUILD_NUM
             image="steshaw/bt-build-base:$tag"
             echo "Building image $image"
-            docker build -t "steshaw/bt-build-base:$tag" .
-            docker images
+            docker build -t "$image" .
             docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
             echo "Pushing image $image"
             docker push "$image"
