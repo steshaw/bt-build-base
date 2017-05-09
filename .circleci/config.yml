@@ -18,4 +18,4 @@ jobs:
             docker images
             docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
             echo "Pushing image $image"
-            docker push steshaw/bt-build-base:$TAG
+            docker push "$image"
