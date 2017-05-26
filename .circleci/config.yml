@@ -15,7 +15,7 @@ jobs:
             tag=0.1.$CIRCLE_BUILD_NUM
             imageWithTag="$image:$tag"
             echo "Pull image $image"
-            docker push "$image"
+            docker pull "$image"
             echo "Building image $imageWithTag"
             docker build -t "$imagewithTag" .
             docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
