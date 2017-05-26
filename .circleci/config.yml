@@ -13,6 +13,8 @@ jobs:
           command: |
             tag=0.1.$CIRCLE_BUILD_NUM
             image="steshaw/bt-build-base:$tag"
+            echo "Pull image $image"
+            docker push "$image"
             echo "Building image $image"
             docker build -t "$image" .
             docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
