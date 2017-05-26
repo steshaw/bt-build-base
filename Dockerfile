@@ -24,10 +24,12 @@ run curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 run sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 run sudo apt-get update && sudo apt-get install -y google-cloud-sdk kubectl docker-ce parallel
 
+run stack upgrade
 run stack setup 8.0.2
 
 # SQL stuff
 run apt-get install -y bundler postgresql-client
 
 run apt-get clean
-run echo "export PATH=\$PATH:$HOME/.local/bin" >> /root/.bashrc
+
+env PATH "$PATH:~/.local/bin"
