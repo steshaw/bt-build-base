@@ -11,6 +11,7 @@ jobs:
       - run:
           name: Build
           command: |
+            set -eux
             image="steshaw/bt-build-base"
             tag=0.1.$CIRCLE_BUILD_NUM
             imageWithTag="$image:$tag"
@@ -18,7 +19,7 @@ jobs:
             echo "Pull $imageWithBranch"
             docker pull "$imageWithBranch"
             echo "Building image $imageWithTag"
-            docker build -t "$imagewithTag" -t "$imageWithBranch" .
+            docker build -t "$imageWithTag" -t "$imageWithBranch" .
             docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
             echo "Pushing image $image"
             docker push "$imageWithTag"
