@@ -1,7 +1,9 @@
 from fpco/stack-build
 
 run curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-run apt-get update && apt-get install -y \
+run sudo add-apt-repository -y ppa:git-core/ppa
+run apt-get -y update && apt-get install -y \
+  git \
   nodejs \
   libsass-dev \
   httpie
