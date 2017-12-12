@@ -4,20 +4,12 @@ run curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 run sudo add-apt-repository -y ppa:git-core/ppa
 run apt-get -y update && apt-get install -y \
   git \
-  httpie \
-  libsass-dev \
   nodejs \
-  optipng
-
-# Install GHCJS - requires node.
-run git clone https://github.com/ghcjs/ghcjs.git
-run cd ghcjs && stack setup && stack install
-env PATH /root/.local/bin:$PATH
-run cd ghcjs && stack exec -- ghcjs-boot --dev --no-haddock
+  libsass-dev \
+  httpie
+run which node
 
 # Install OpenJDK
-run apt-get install -y openjdk-9-jdk-headless
-run npm install -g crass
 run apt-get install -y pkg-config libcairo2-dev libjpeg-dev libgif-dev
 
 run echo "deb https://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
