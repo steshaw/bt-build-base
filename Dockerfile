@@ -4,9 +4,10 @@ run curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 run sudo add-apt-repository -y ppa:git-core/ppa
 run apt-get -y update && apt-get install -y \
   git \
-  nodejs \
+  httpie \
   libsass-dev \
-  httpie
+  nodejs \
+  time
 run which node
 
 # Install OpenJDK
