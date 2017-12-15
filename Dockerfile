@@ -1,4 +1,4 @@
-from fpco/stack-build
+from fpco/stack-build:lts-8.17
 
 run curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 run sudo add-apt-repository -y ppa:git-core/ppa
@@ -7,7 +7,8 @@ run apt-get -y update && apt-get install -y \
   httpie \
   libsass-dev \
   nodejs \
-  time
+  time \
+  vim
 run which node
 
 # Install OpenJDK
