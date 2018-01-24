@@ -19,3 +19,4 @@ jobs:
             docker login -u "$DOCKER_USERNAME" -p "$(echo $DOCKER_PASSWORD_BASE64 | base64 -d)"
             echo "Pushing image $image"
             docker push "$imageWithTag"
+          no_output_timeout: 30m
