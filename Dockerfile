@@ -24,7 +24,7 @@ run curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 run sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 run sudo apt-get -qy update && sudo apt-get -qy install google-cloud-sdk kubectl docker-ce parallel
 
-run stack --silent upgrade
+run stack --silent upgrade --git-branch stable --git
 run stack --silent setup 8.0.2
 
 # SQL stuff
